@@ -1,0 +1,79 @@
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSVフォーマット変換ツール</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- DEVICON -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css">
+</head>
+
+<body>
+    <header>
+        <h1>　</h1>
+    </header>
+    <div id="description">
+        <h2>インポートフォーマット変換ツール
+        </h2>
+        <ul>
+            <li> 作成するCSVフォーマットに合わせて「Book」or「小テスト」のタブを選択します。</li>
+            <li> 変換するCSVファイルをドラック＆ドロップ（ファイルを選択）します。</li>
+            <li> 「変換」ボタンをクリックします。</li>
+        </ul>
+        <p class="note"> ※選択問題形式以外の形式は現在対応していません。</p>
+    </div>
+
+    <!-- タブ切り替え可能なファイル選択Box -->
+    <div id="input-container" class="active">
+        <!-- 切り替え用のタブ -->
+        <input type="radio" name="tab" id="input-json-tab" checked>
+        <label class="tab" for="input-json-tab">Book</label>
+        <input type="radio" name="tab" id="upload-json-tab">
+        <label class="tab" for="upload-json-tab">小テスト</label>
+        <!-- Book -->
+        <div id="input-json-container" class="content-container">
+            <div id="inputFile">
+                <!-- checkbox -->
+                <label><input type='checkbox' id = "BookChoiceOnly">全問題択一のみ</label>
+                <!-- ドラッグ&ドロップエリア -->
+                <p id="dropAreaBook">ここにファイルをドロップしてください</p>
+        
+                <!-- 通常のinput[type=file] -->
+                <form method="post" enctype="multipart/form-data">
+                    <div>
+                      <input type="file" id="bookFile" name="file" accept=".csv">
+                    </div>
+                    <p id="msg"></p>
+                </form>
+                <a id="bookDownloadBtn" >ダウンロード</a>                
+            </div>
+        </div>
+        <!-- 小テスト -->
+        <div id="upload-json-container" class="content-container">
+            <div id="inputFile">
+                <!-- checkbox -->
+                <!--label><input type='checkbox' id = "BookChoiceOnly">全問題択一のみ</label-->
+                <!-- ドラッグ&ドロップエリア -->
+                <p id="dropAreaTest">ここにファイルをドロップしてください</p>
+        
+                <!-- 通常のinput[type=file] -->
+                <form method="post" enctype="multipart/form-data">
+                    <div>
+                      <input type="file" id="testFile" name="file" accept=".csv">
+                    </div>
+                    <p id="msg"></p>
+                </form>
+                <a id="testDownloadBtn" >ダウンロード</a>                
+            </div>
+
+        </div>
+        <!--button type="button" id="downloadBtn">ダウンロード</button-->
+    </div>
+    <footer>
+        <i class="devicon-github-original"></i>
+        <a href="https://github.com/Westen0511/My-10-Web-Dev-Projects" class="github-link">Github-link</a>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>

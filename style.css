@@ -1,0 +1,310 @@
+/*
+配色参考 : https://saruwakakun.com/design/gallery/palette
+#516C9D 濃い
+#4072B3 濃い青
+#6088C6 普通の青
+#AEC4E5 薄い青
+#EB8686 ピンク
+#C0C0C0 灰色
+*/
+
+/* ------------------------------------------------------------------------ */
+/* 一般 */
+/* ------------------------------------------------------------------------ */
+
+body {
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 18px;
+    color: white;
+    font-weight: normal;
+    margin-left: 1em;
+}
+
+h2 {
+    color: #212121;
+    font-size: 18px;
+    font-family: HelveticaNeueeTextPro-Bold, TazuganeGothicStdN-Bold,sans-serif;
+    line-height: 1.5;
+    margin-left: 1em;
+    margin-bottom: 20px;
+    letter-spacing: 0.03em;
+}
+
+ul {
+    color: #22212f;
+    font-size: 14px;
+    font-family: HelveticaNeueeTextPro-Roman, TazuganeGothicStdN-Regular,sans-serif;
+    letter-spacing: 0.03em;
+    line-height: 1.8;
+    list-style: disc;
+    list-style-position: outside;
+    margin-left: 18px;
+    margin-bottom: 4px;    
+}
+
+p.note {
+    color: #757575;
+    font-size: 14px;
+    margin-left: 1em;
+    margin-bottom: 30px;
+}
+
+header, footer {
+    background-color: #009EFF;
+}
+
+label, a {
+    color: white;
+    font-size: 1.2em;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: #C0C0C0;
+}
+
+thead {
+    background-color: #6088C6;
+}
+
+td {
+    font-size: 12px;
+    padding: .2em .5em;
+    border: solid 1px #ccc;
+}
+
+div#description {
+    height: 200px;
+}
+
+/* 入出力のコンテナ */
+div.active {
+    height: 700px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #AEC4E5;
+}
+
+div.inactive {
+    height: 700px;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #AEC4E5;
+}
+
+p{
+    text-indent: 1em;
+}
+
+/* ------------------------------------------------------------------------ */
+/* 順序付きリスト */
+/* ------------------------------------------------------------------------ */
+
+ol {
+    list-style-type: disc;
+    /*counter-reset: number; カウンターを初期化 */
+}
+
+li {
+    position: relative;
+}
+
+/* ------------------------------------------------------------------------ */
+/* タブ切り替え */
+/* ------------------------------------------------------------------------ */
+
+.content-container {
+    display: none;
+    height: 80%;
+    width: 100%;
+    /* 位置合わせ */
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* 配色 */
+    background-color: #f5f5f5;
+}
+
+label.tab {
+    width: calc(100%/2);
+    height: 7%;
+    line-height: 50px;
+    text-align: center;
+    background-color: #C0C0C0;
+}
+
+.tab:hover {
+    opacity: 0.75;
+}
+
+input[name="tab"] {
+    display: none; /* ラジオボタンを非表示に */
+}
+
+/* 選択されたタブ */
+input:checked + .tab {
+    background-color: #0079F2;
+}
+
+button {
+    border: 2px solid #009EFF;
+    border-radius: 50px;
+    background: #FFF;
+    color: #009EFF;
+    font-size: 15px;
+    font-family: HelveticaNeueeTextPro-Bold, TazuganeGothicStdN-Bold,sans-serif;
+    padding: 14px 25px 16px;
+    display: block;
+    text-align: center;
+    width: 180px;
+    letter-spacing: 0.03em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#input-json-tab:checked ~ #input-json-container,
+#upload-json-tab:checked ~ #upload-json-container,
+#output-csv-tab:checked ~ #output-csv-container,
+#download-csv-tab:checked ~ #download-csv-container {
+    display: flex;
+}
+
+
+/* ------------------------------------------------------------------------ */
+/* ファイル取得 */
+/* ------------------------------------------------------------------------ */
+
+
+#inputFile {
+    position: relative;
+    padding: 100px 100px 100px;
+    text-align: center;
+}
+
+#dropArea {
+    position: relative;
+    padding: 50px 50px 50px;
+    text-align: center;
+    border: 2px dashed #494949;
+    background: rgba(22, 165, 191, 0);
+    transition: all 0.25s cubic-bezier(0.21, 0.51, 0.51, 1);
+}
+
+#dropArea.dragover {
+    border: 2px solid #16a5bf;
+    background: rgba(22, 165, 191, 0.6);
+}
+
+#uploadFile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: block;
+    width: 200px;
+    height: 50px;
+    opacity: 0;
+}
+
+#inputFileWrap {
+    position: relative;
+    display: inline-block;
+}
+
+#btnInputFile,
+#btnChangeFile {
+    display: table;
+    width: 200px;
+}
+
+#btnChangeFile {
+    display: none;
+}
+
+
+#btnInputFile span,
+#btnChangeFile span {
+    position: relative;
+    z-index: 2;
+    display: table-cell;
+    width: 200px;
+    height: 50px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: #333;
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
+    line-height: 1;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+#upFileWrap.selected #btnInputFile {
+    display: none;
+}
+
+#upFileWrap.selected #btnChangeFile {
+    display: table;
+}
+
+/* ------------------------------------------------------------------------ */
+/* フッター */
+/* ------------------------------------------------------------------------ */
+.devicon-github-original,
+.github-link {
+    position: relative;
+    left: 80%;
+}
+
+/* ------------------------------------------------------------------------ */
+/* ローディング */
+/* ------------------------------------------------------------------------ */
+
+.loading {
+    visibility: hidden;
+    /* 画面最大 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* 背景色（黒、不透明度80%） */
+    background-color: #000000;
+    opacity: 0.8;
+    /* フレックスコンテナ（縦並べ、横中央、縦中央） */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* 表示を一番上 */
+    z-index: 999;
+    /* 選択付加 */
+    user-select: none;
+}
+
+.load-text {
+    color: white;
+    font-size: 16pt;
+}
+
+.load-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 10px solid #4072b3;
+    border-top-color: white;
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
