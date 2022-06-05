@@ -26,15 +26,18 @@
     <!-- タブ切り替え可能なファイル選択Box -->
     <div id="input-container" class="active">
         <!-- 切り替え用のタブ -->
-        <input type="radio" name="tab" id="input-json-tab" checked>
-        <label class="tab" for="input-json-tab">Book変換</label>
-        <input type="radio" name="tab" id="upload-json-tab">
-        <label class="tab" for="upload-json-tab">小テスト変換</label>
-        <input type="radio" name="tab" id="upload-json-tab">
-        <label class="tab" for="upload-json-tab">誤答生成</label>
+        <input type="radio" name="tab" id="bookTab" checked>
+        <input type="radio" name="tab" id="testTab">
+        <input type="radio" name="tab" id="alternativesTab">
+        
+        <div class="tab-area">
+            <label class="tab" for="bookTab">Book変換</label>
+            <label class="tab" for="testTab">小テスト変換</label>
+            <label class="tab" for="alternativesTab">誤答生成</label>
+        </div>
 
         <!-- Book -->
-        <div id="input-json-container" class="content-container">
+        <div id="bookContainer" class="content-container">
             <div id="inputFile">
                 <!-- checkbox -->
                 <label><input type='checkbox' id = "BookChoiceOnly">全問題択一のみ</label>
@@ -52,7 +55,7 @@
             </div>
         </div>
         <!-- 小テスト -->
-        <div id="upload-json-container" class="content-container">
+        <div id="testContainer" class="content-container">
             <div id="inputFile">
                 <!-- checkbox -->
                 <!--label><input type='checkbox' id = "BookChoiceOnly">全問題択一のみ</label-->
@@ -70,7 +73,22 @@
             </div>
 
         </div>
-        <!--button type="button" id="downloadBtn">ダウンロード</button-->
+        <!-- 誤答生成 -->
+        <div id="alternativesContainer" class="content-container">
+            <div id="inputFile">
+                <p id="dropAreaTest">ここにファイルをドロップしてください</p>
+                <p>誤答生成</p>
+                <!-- 通常のinput[type=file] -->
+                <form method="post" enctype="multipart/form-data">
+                    <div>
+                      <input type="file" id="testFile" name="file" accept=".csv">
+                    </div>
+                    <p id="msg"></p>
+                </form>
+                <a id="testDownloadBtn" >ダウンロード</a>                
+            </div>
+
+        </div>
     </div>
     <footer>
         <i class="devicon-github-original"></i>

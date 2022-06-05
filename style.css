@@ -168,10 +168,9 @@ button {
     margin-bottom: 5px;
 }
 
-#input-json-tab:checked ~ #input-json-container,
-#upload-json-tab:checked ~ #upload-json-container,
-#output-csv-tab:checked ~ #output-csv-container,
-#download-csv-tab:checked ~ #download-csv-container {
+#bookTab:checked ~ #bookContainer,
+#testTab:checked ~ #testContainer,
+#alternativesTab:checked ~ #alternativesContainer {
     display: flex;
 }
 
